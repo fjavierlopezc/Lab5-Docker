@@ -1,0 +1,18 @@
+
+# Usa la imagen base de Python 3.11
+FROM python:3.11
+
+# Establece el directorio de trabajo en /app
+WORKDIR /app
+
+# Copia el notebook pi.ipynb al directorio /app en la imagen
+COPY pi-exercise-submit.ipynb /app/
+
+# Instala los paquetes necesarios para ejecutar el notebook
+RUN pip install ipython jupyter
+RUN pip install ipython numpy
+RUN pip install ipython numba
+
+
+# Establece el comando por defecto para ejecutar el notebook con el intérprete de IPython
+CMD ["ipython", "/app/pi-exercise-submit.ipynb", "100000"]
